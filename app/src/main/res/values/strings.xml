@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">JustGroove</string>
+    <string name="bottom_bar_home">首页</string>
+    <string name="bottom_bar_schedule">日程</string>
+    <string name="bottom_bar_community">社区</string>
+    <string name="bottom_bar_mine">我的</string>
+    <string name="account_title_none">暂无称号</string>
+</resources>
