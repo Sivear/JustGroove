@@ -11,6 +11,8 @@ import com.sivear.justgroove.model.account.AccountTitle
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 private val Context.accountDataStore by preferencesDataStore(name = PreferenceNames.AccountPreference.name)
 
@@ -19,21 +21,16 @@ class AccountPreference private constructor() {
 
     suspend fun saveAccountInfo(ctx: Context, info: AccountModel) {
         ctx.accountDataStore.edit { data ->
-            data[basicInfoKey] = info.toString()
+            data[basicInfoKey] = Json.encodeToString(info)
         }
     }
 
-    suspend fun getAccountInfo(ctx: Context): AccountModel {
-        val dataFlow = ctx.accountDataStore.data.map { prefs ->
-            prefs[basicInfoKey] ?: "" // 取出 JSON 字符串
+    fun getAccountInfo(ctx: Context): Flow<AccountModel> {
+        return ctx.accountDataStore.data.map { prefs ->
+            prefs[basicInfoKey]?.let { json ->
+                Json.decodeFromString<AccountModel>(json)
+            } ?: AccountModel.DEFAULT
         }
-//
-//        return dataFlow.first().let { json ->
-//            Log.i("testtttttt", json)
-//
-//            Gson().fromJson(json, AccountModel::class.java) // 解析 JSON 为对象
-//        }
-        return AccountModel(1, "11", "1111", AccountTitle.None)
     }
 
     companion object {

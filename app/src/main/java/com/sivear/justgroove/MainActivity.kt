@@ -31,6 +31,7 @@ import kotlinx.coroutines.launch
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        System.setProperty("dns.server", "8.8.8.8")
         enableEdgeToEdge()
         CoroutineScope(Dispatchers.IO).launch {
             mockAccountData(baseContext)
@@ -76,7 +77,7 @@ fun GreetingPreview() {
 
 // TODO: 后面加入登录相关功能后删除
 suspend fun mockAccountData(ctx: Context) {
-    val accountData = AccountModel(1, "白荻劲风", avatar = "https://images1.epochhk.com/pictures/i-epochtimes-com/b859c6c68c346decf16858dae13aa3db@1200x1200.jpg?url=https://i.epochtimes.com/assets/uploads/2020/04/shutterstock_473779396.jpg", title = AccountTitle.None)
+    val accountData = AccountModel("1", "白荻劲风", avatar = "https://images1.epochhk.com/pictures/i-epochtimes-com/b859c6c68c346decf16858dae13aa3db@1200x1200.jpg?url=https://i.epochtimes.com/assets/uploads/2020/04/shutterstock_473779396.jpg", title = AccountTitle.None)
 
     AccountPreference.getInstance().saveAccountInfo(ctx, accountData)
 }
