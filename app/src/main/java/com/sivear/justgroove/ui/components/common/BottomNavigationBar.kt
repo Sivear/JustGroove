@@ -1,4 +1,4 @@
-package com.sivear.justgroove.ui.components
+package com.sivear.justgroove.ui.components.common
 
 import androidx.compose.foundation.background
 import androidx.compose.material3.Icon

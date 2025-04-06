@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -21,13 +20,15 @@ import com.sivear.justgroove.model.account.AccountModel
 import com.sivear.justgroove.model.account.AccountTitle
 import com.sivear.justgroove.preference.AccountPreference
 import com.sivear.justgroove.route.RouteTable
-import com.sivear.justgroove.ui.components.BottomNavigationBar
+import com.sivear.justgroove.ui.components.common.BottomNavigationBar
 import com.sivear.justgroove.ui.screens.HomeScreen
 import com.sivear.justgroove.ui.theme.JustGrooveTheme
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

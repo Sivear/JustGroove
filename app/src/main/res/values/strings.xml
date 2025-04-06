@@ -5,4 +5,5 @@
     <string name="bottom_bar_community">社区</string>
     <string name="bottom_bar_mine">我的</string>
     <string name="account_title_none">暂无称号</string>
+    <string name="teacher">老师: %1$s</string>
 </resources>
